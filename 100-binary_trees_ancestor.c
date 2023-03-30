@@ -31,15 +31,15 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 		const binary_tree_t *second)
 {
 	const binary_tree_t *node, *lesser_node;
-	size_t f_depth = binary_node_depth(first);
-	size_t s_depth = binary_node_depth(second);
-	size_t size_arr = (f_depth > s_depth) ? f_depth : s_depth;
-	size_t j;
+	size_t f_depth, s_depth, size_arr, j;
 	const binary_tree_t **parent_arr;
 	int i = 0;
 
 	if (!first || !second || !first->parent || !second->parent)
 		return (NULL);
+	f_depth = binary_node_depth(first);
+	s_depth = binary_node_depth(second);
+	size_arr = (f_depth > s_depth) ? f_depth : s_depth;
 	parent_arr = malloc(sizeof(binary_tree_t) * size_arr);
 	if (f_depth > s_depth)
 		node = first->parent;
